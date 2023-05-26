@@ -218,17 +218,13 @@ public class TestingClassLuma extends parametars {
 
 		Thread.sleep(2000);
 
-		
-
 	}
 
-	
 	@Test(priority = 4)
-	public void FusionBackpackAddToCart5Times () throws InterruptedException {
-		
-		
+	public void FusionBackpackAddToCart5Times() throws InterruptedException {
+
 		Driver.get(TheHomePage);
-		
+
 		WebElement FusionBackpack = Driver.findElement(
 				By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/div[3]/div/div/ol/li[5]/div/a/span/span/img"));
 
@@ -239,23 +235,22 @@ public class TestingClassLuma extends parametars {
 		BackpackQty.clear();
 		BackpackQty.sendKeys("5");
 		Thread.sleep(3000);
-		
+
 		WebElement AddToCartBotton2 = Driver.findElement(By.xpath("//*[@id=\"product-addtocart-button\"]"));
 		AddToCartBotton2.click();
-		
+
 		Thread.sleep(5000);
 		WebElement ActualMassage = Driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div"));
 		String ActualMassageValue = ActualMassage.getText();
 		MyAssert.assertEquals(ActualMassageValue, ExpectedMassage);
 		System.out.println("This Item (Fusion Backpack) Is Out Of Stock");
-		
-		
 
 		Thread.sleep(7000);
 	}
+
 	@Test(priority = 5)
 	public void ShippingAddressInfo() throws InterruptedException {
-		
+
 		Thread.sleep(2000);
 
 		WebElement Cart = Driver.findElement(By.xpath("/html/body/div[1]/header/div[2]/div[1]/a/span[2]/span[1]"));
@@ -265,92 +260,88 @@ public class TestingClassLuma extends parametars {
 		WebElement ProceedToCheckoutBotton = Driver.findElement(By.xpath("//*[@id=\"top-cart-btn-checkout\"]"));
 		ProceedToCheckoutBotton.click();
 		Thread.sleep(10000);
-		
+
 		String ExpectedAddress = "Shipping Address";
 		WebElement ActualAddress = Driver.findElement(By.xpath("//*[@id=\"shipping\"]/div[1]"));
 		ActualAddress.getText();
-		
-		if (ExpectedAddress.equalsIgnoreCase(ActualAddress.getText()) ) {
-			
-			
-			
-			
-			WebElement Nextbotton =Driver.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/div/button"));
+
+		if (ExpectedAddress.equalsIgnoreCase(ActualAddress.getText())) {
+
+			WebElement Nextbotton = Driver
+					.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/div/button"));
 			Nextbotton.click();
 			Thread.sleep(6000);
-			
-			
-			WebElement PlaceOrder = Driver.findElement(By.xpath("//*[@id=\"checkout-payment-method-load\"]/div/div/div[2]/div[2]/div[4]/div/button"));
+
+			WebElement PlaceOrder = Driver.findElement(
+					By.xpath("//*[@id=\"checkout-payment-method-load\"]/div/div/div[2]/div[2]/div[4]/div/button"));
 			PlaceOrder.click();
-			
+
 		}
-			
-			
-			else {
-				
-				
-			//=============> If there is no address The code below create anew address 
 
-		WebElement CountryField = Driver.findElement(By.cssSelector("select[name='country_id'"));
-		CountryField.click();
+		else {
 
-		CountryField.sendKeys("j", "j", "j", "j", Keys.ENTER);
-		WebElement CompanyField = Driver.findElement(By.cssSelector("input[name='company'"));
-		CompanyField.sendKeys("Ahmad Company");
+// ====================> If there is no address The code below create anew address
 
-		WebElement StreetAddressField1 = Driver.findElement(By.cssSelector("input[name='street[0]'"));
-		StreetAddressField1.sendKeys("Al-Shaheed Ahmad Al-Baradleh");
+			WebElement CountryField = Driver.findElement(By.cssSelector("select[name='country_id'"));
+			CountryField.click();
 
-		WebElement StreetAdressField2 = Driver.findElement(By.cssSelector("input[name='street[1]'"));
-		StreetAdressField2.sendKeys("Jerash Street ");
+			CountryField.sendKeys("j", "j", "j", "j", Keys.ENTER);
+			WebElement CompanyField = Driver.findElement(By.cssSelector("input[name='company'"));
+			CompanyField.sendKeys("Ahmad Company");
 
-		WebElement StreetAdressField3 = Driver.findElement(By.cssSelector("input[name='street[2]'"));
-		StreetAdressField3.sendKeys("Al-Qirwan Street");
+			WebElement StreetAddressField1 = Driver.findElement(By.cssSelector("input[name='street[0]'"));
+			StreetAddressField1.sendKeys("Al-Shaheed Ahmad Al-Baradleh");
 
-		WebElement CityField = Driver.findElement(By.cssSelector("input[name='city'"));
-		CityField.sendKeys("Jerash");
+			WebElement StreetAdressField2 = Driver.findElement(By.cssSelector("input[name='street[1]'"));
+			StreetAdressField2.sendKeys("Jerash Street ");
 
-		WebElement StateProvinceField = Driver.findElement(By.cssSelector("input[name='region'"));
-		StateProvinceField.sendKeys("Jerash");
+			WebElement StreetAdressField3 = Driver.findElement(By.cssSelector("input[name='street[2]'"));
+			StreetAdressField3.sendKeys("Al-Qirwan Street");
 
-		WebElement ZipPostalCodeField = Driver.findElement(By.cssSelector("input[name='postcode'"));
-		ZipPostalCodeField.sendKeys("26833");
+			WebElement CityField = Driver.findElement(By.cssSelector("input[name='city'"));
+			CityField.sendKeys("Jerash");
 
-		WebElement PhoneNumberField = Driver.findElement(By.cssSelector("input[name='telephone'"));
-		PhoneNumberField.sendKeys("00962776099745");
+			WebElement StateProvinceField = Driver.findElement(By.cssSelector("input[name='region'"));
+			StateProvinceField.sendKeys("Jerash");
 
-		WebElement NextBotton = Driver
-				.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/div/button"));
+			WebElement ZipPostalCodeField = Driver.findElement(By.cssSelector("input[name='postcode'"));
+			ZipPostalCodeField.sendKeys("26833");
 
-		NextBotton.click();
+			WebElement PhoneNumberField = Driver.findElement(By.cssSelector("input[name='telephone'"));
+			PhoneNumberField.sendKeys("00962776099745");
+
+			WebElement NextBotton = Driver
+					.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/div/button"));
+
+			NextBotton.click();
 		}
-		
-		
-			Thread.sleep(4000);
-			WebElement YourOrderNumber =Driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/p[1]/a/strong"));
-			YourOrderNumber.click();
+
+		Thread.sleep(4000);
+		WebElement YourOrderNumber = Driver
+				.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/p[1]/a/strong"));
+		YourOrderNumber.click();
 //***************************************************************************************************
 //	 WebElement CompanyField =
 //	 Driver.findElement(By.xpath("//*[@id=\"H14K21M\"]"));
-
-	// ======> Trying To Find Element By Tag Name & Class Name
-
+//
+//============= ======> Trying To Find Element By Tag Name & Class Name
+//
 //	    WebElement LiField =Driver.findElement(By.className("checkout-shipping-address"));
 //		List<WebElement> listOfInput =LiField.findElements(By.tagName("input"));
 //		String CheckAttribute = LiField.getAttribute("name");
 //		String ttt =attributeValue.substring(0, 11);
 //		System.out.println(listOfInput);
 //		System.out.println(CheckAttribute);
-	 }
+	}
+
 	@Test(priority = 6)
 	public void ChickThePrice() throws InterruptedException {
 
-		// =======> Short Cut
+// =============> Short Cut
 //		String Url = "https://magento.softwaretestingboard.com/sales/order/view/order_id/9012/";
 //		Driver.get(Url);
 
 		Thread.sleep(10000);
-
 
 		WebElement TFoot = Driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tfoot"));
 
@@ -360,13 +351,12 @@ public class TestingClassLuma extends parametars {
 		double ShippingHandling = Double.parseDouble(PriceElement.get(1).getText().replace("$", ""));
 		double Discount = Double.parseDouble(PriceElement.get(2).getText().replace("$", ""));
 		double GrandTotal = Double.parseDouble(PriceElement.get(3).getText().replace("$", ""));
-		
+
 		double ExpectedPrics = Subtotal + ShippingHandling + Discount;
 		double ActualPrics = GrandTotal;
-		
+
 		MyAssert.assertEquals(ActualPrics, ExpectedPrics, 0.00001);
-		
-		//=============================================================================================
+// =============================================================================================
 //*****************************************************************************************************
 //		failed trying to catch the elements 
 //	    WebElement SubtotalElement = Driver.findElement(By.className("subtotal-amount"));
@@ -385,16 +375,15 @@ public class TestingClassLuma extends parametars {
 //        // Assert the final price is correct
 //        double expectedFinalPrice = 100.0; // Replace with your expected value
 //        MyAssert.assertEquals(ActualFinalPrics, ExpectedFinalPrice, 0.001);	
-
 //		WebElement Subtotal =Driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tfoot/tr[1]/td/span"));
 //		
 //		String SubtotalWithoutDollarSign = ThePrices.get(0).getText();
 //		
-		// ======> Convert String To Integer
-		// int ValueOfSubtotal =Integer.parseInt(SubtotalWithoutDollarSign);
-
+// ========> Convert String To Integer
+//      int ValueOfSubtotal =Integer.parseInt(SubtotalWithoutDollarSign);
+//
 //		Double DoubleValueSubtotal = Double.parseDouble(SubtotalWithoutDollarSign);
-
+//
 //		
 //		//*[@id="my-orders-table"]/tfoot/tr[3]/td/span
 //		WebElement DiscountValue =Driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tfoot/tr[2]/td/span"));
@@ -423,9 +412,9 @@ public class TestingClassLuma extends parametars {
 //	System.out.println(DoubleValueActualTotalPrice);
 //	
 //	MyAssert.assertEquals(DoubleValueActualTotalPrice, ExpectedTotalPrice , 0.0001);
-
-		// ====> Try To Find Element By Tag name & Class Name
-
+//
+//=================> Try To Find Element By Tag name & Class Name
+//
 //		WebElement Item1 = Driver.findElement(By.tagName("tr"));
 //		//Item1.getText();
 //		WebElement ItemId1 = Item1.findElement(By.tagName("td"));
@@ -437,153 +426,109 @@ public class TestingClassLuma extends parametars {
 //		//ItemId1.getText();
 //		
 //		System.out.println(Item1Price);
-
+//
 //		List<WebElement> price_excluding_tax = Driver.findElements(By.className("price-excluding-tax"));
 //		
 //		System.out.println(price_excluding_tax.size());
-		// for (int i =0 ;i<location_OF_Price.size();i++) {
-
+//         for (int i =0 ;i<location_OF_Price.size();i++) {
+//
 //			List<WebElement>ThePrices = Driver.findElements(By.className("price"));
 //			
 //			for (int y=0 ; y<location_OF_Price.size();y++) {
 //				System.out.println(ThePrices.get(y).getText());
-
+//
 //			}
-		// System.out.println(location_OF_Price.get(i).findElement(By.className("price")));
+//      System.out.println(location_OF_Price.get(i).findElement(By.className("price")));
 
-		
-
-		WebElement CustomerWelcome =Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]"));
+		WebElement CustomerWelcome = Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]"));
 		CustomerWelcome.click();
-		WebElement SignOutElement =Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a"));
+		WebElement SignOutElement = Driver
+				.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a"));
 		SignOutElement.click();
-		
-		
+
 	}
 
-	
-	
 	@Test(priority = 7)
-	public void ReInter_The_WebSite_And_ReOrder () throws InterruptedException {
-		
+	public void ReInter_The_WebSite_And_ReOrder() throws InterruptedException {
+
 		Driver.get(TheWebSite);
-		
+
 		WebElement SignInElement = Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/a"));
-		
+
 		SignInElement.click();
-		
+
 		WebElement EmailElement = Driver.findElement(By.xpath("//*[@id=\"email\"]"));
 		EmailElement.sendKeys(Email);
-		
-		WebElement PassElement =Driver.findElement(By.xpath("//*[@id=\"pass\"]"));
+
+		WebElement PassElement = Driver.findElement(By.xpath("//*[@id=\"pass\"]"));
 		PassElement.sendKeys(Pass);
-		
-		WebElement SignInBotton =Driver.findElement(By.xpath("//*[@id=\"send2\"]"));
+
+		WebElement SignInBotton = Driver.findElement(By.xpath("//*[@id=\"send2\"]"));
 		SignInBotton.click();
 		Thread.sleep(8000);
-		
-		WebElement CustomerWelcome =Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]"));
+
+		WebElement CustomerWelcome = Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]"));
 		CustomerWelcome.click();
-		
-		WebElement MyAccountElement = Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a"));
+
+		WebElement MyAccountElement = Driver
+				.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a"));
 		MyAccountElement.click();
-		
-		WebElement MyOrderElement =Driver.findElement(By.xpath("//*[@id=\"block-collapsible-nav\"]/ul/li[2]/a"));
+
+		WebElement MyOrderElement = Driver.findElement(By.xpath("//*[@id=\"block-collapsible-nav\"]/ul/li[2]/a"));
 		MyOrderElement.click();
-		
-		
-		for (int i=0 ; i<5; i++) {
-			WebElement ReOrderBotton =Driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tbody/tr[1]/td[6]/a[2]/span"));
+
+		for (int i = 0; i < 5; i++) {
+			WebElement ReOrderBotton = Driver
+					.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tbody/tr[1]/td[6]/a[2]/span"));
 			ReOrderBotton.click();
-			
-			WebElement ProceedToCheckOutBotton =Driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/div[1]/ul/li[1]/button"));
+
+			WebElement ProceedToCheckOutBotton = Driver
+					.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/div[1]/ul/li[1]/button"));
 			ProceedToCheckOutBotton.click();
 			Thread.sleep(7000);
-			WebElement NextBotton =Driver.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/div/button"));
+			WebElement NextBotton = Driver
+					.findElement(By.xpath("//*[@id=\"shipping-method-buttons-container\"]/div/button"));
 			NextBotton.click();
 			Thread.sleep(7000);
-			WebElement PlaceOrderBotton =Driver.findElement(By.xpath("//*[@id=\"checkout-payment-method-load\"]/div/div/div[2]/div[2]/div[4]/div/button"));
+			WebElement PlaceOrderBotton = Driver.findElement(
+					By.xpath("//*[@id=\"checkout-payment-method-load\"]/div/div/div[2]/div[2]/div[4]/div/button"));
 			PlaceOrderBotton.click();
 			Thread.sleep(7000);
-			WebElement ContinueShoppingBotton =Driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/div/div/a"));
+			WebElement ContinueShoppingBotton = Driver
+					.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div/div[2]/div/div/a"));
 			ContinueShoppingBotton.click();
 			Thread.sleep(7000);
-			WebElement CustomerWelcome2 =Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/span/button"));
+			WebElement CustomerWelcome2 = Driver
+					.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/span/button"));
 			CustomerWelcome2.click();
 			Thread.sleep(7000);
-			WebElement MyAccountElement2 =Driver.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a"));
+			WebElement MyAccountElement2 = Driver
+					.findElement(By.xpath("/html/body/div[1]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a"));
 			MyAccountElement2.click();
-			Thread.sleep(7000);	
-			WebElement MyOrderElement2 =Driver.findElement(By.xpath("//*[@id=\"block-collapsible-nav\"]/ul/li[2]/a"));
+			Thread.sleep(7000);
+			WebElement MyOrderElement2 = Driver.findElement(By.xpath("//*[@id=\"block-collapsible-nav\"]/ul/li[2]/a"));
 			MyOrderElement2.click();
 			Thread.sleep(7000);
-			
+
 		}
-		
+
 	}
-		
-		
-		
-		
-		@Test(priority = 8)
-		public void CheckLast5InvoicesSamePrice () throws InterruptedException {
+
+	@Test(priority = 8)
+	public void CheckLast5InvoicesSamePrice() throws InterruptedException {
 		WebElement TBody = Driver.findElement(By.xpath("//*[@id=\"my-orders-table\"]/tbody"));
 
 		List<WebElement> PriceElement2 = TBody.findElements(By.className("price"));
 
-		
-		
-		 
+		for (int y = 0; y < 5; y++) {
 
-	        
-	        for (int y=0 ;y<5;y++) {
-	        	
-	       double ActualPricsFor5Invoices=Double.parseDouble(PriceElement2.get(y).getText().replace("$", ""));  
-	       Thread.sleep(2000);
-	      // System.out.println(ActualPricsFor5Invoices);
-	       MyAssert.assertEquals(ActualPricsFor5Invoices, ExpectedPricsFor5Invoices, 0.00001);
-	            
-	    }
-		
-		
-	
-	        
-		
-		
+			double ActualPricsFor5Invoices = Double.parseDouble(PriceElement2.get(y).getText().replace("$", ""));
+			Thread.sleep(2000);
+//           System.out.println(ActualPricsFor5Invoices);
+			MyAssert.assertEquals(ActualPricsFor5Invoices, ExpectedPricsFor5Invoices, 0.00001);
+
+		}
+
 	}
-			
-		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
